@@ -34,6 +34,14 @@
 
 //style property
 
-let box = document.querySelector(".box");
-box.style.backgroundColor = "blue";
-box.style.width = "200px";
+// let box = document.querySelector(".box");
+// box.style.backgroundColor = "blue";
+// box.style.width = "200px";
+
+//dom events
+let date = document.querySelector(".datee");
+
+let btn = document.querySelector(".dateee");
+btn.addEventListener("click", () => {
+  date.innerHTML = Date();
+});
