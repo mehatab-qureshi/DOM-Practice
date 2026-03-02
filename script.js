@@ -38,10 +38,47 @@
 // box.style.backgroundColor = "blue";
 // box.style.width = "200px";
 
-//dom events
-let date = document.querySelector(".datee");
+// //dom events
+// let date = document.querySelector(".datee");
 
-let btn = document.querySelector(".dateee");
-btn.addEventListener("click", () => {
-  date.innerHTML = Date();
-});
+// let btn = document.querySelector(".dateee");
+// btn.addEventListener("click", () => {
+//   date.innerHTML = Date();
+// });
+
+//event listener and its management
+let hi = document.querySelector(".hi");
+let add = document.querySelector(".add");
+let remove = document.querySelector(".remove");
+
+let text = () => {
+  hi.innerHTML = "Text Added";
+};
+
+add.addEventListener("click", text);
+remove.removeEventListener("click", text);
+
+//event bubbling & capturing
+//bubbling(defualt)
+let parent = document.querySelector(".parent");
+let child = document.querySelector(".child");
+
+// child.addEventListener("click", () => {
+//   console.log("chiiiiild clicked");
+// });
+
+// parent.addEventListener("click", () => {
+//   console.log("parent clicked");
+// }); //first child chelga nxt parent
+
+//capturing
+parent.addEventListener("click", () => {
+  console.log("parent clicked");
+},true);
+
+child.addEventListener("click", () => {
+  console.log("child clicked");
+}); //parent first then child
+
+
+//Timing Events...
