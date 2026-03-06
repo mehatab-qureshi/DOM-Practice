@@ -44,6 +44,42 @@ console.log(document.title);
 // box.style.backgroundColor = "blue";
 // box.style.width = "200px";
 
+//classList
+// let body = document.querySelector("body");
+// let darkmode = document.querySelector(".darkmode");
+// darkmode.addEventListener("click", () => {
+//   body.classList.toggle("dark");
+// });
+
+//creating & removing ele
+let h2 = document.createElement("h2");
+let body = document.querySelector("body");
+h2.innerText = "created and added content";
+h2.classList.add("boxx");
+h2.setAttribute("id", "b2");
+body.appendChild(h2);
+
+//todo list
+let addlist = document.createElement("button");
+addlist.innerText = "Add";
+body.appendChild(addlist);
+
+let dellist = document.createElement("button");
+dellist.innerHTML = "Del";
+body.appendChild(dellist);
+
+let myFunctionAdd = () => {
+  let li = document.createElement("li");
+  li.textContent = "HEllo";
+  body.appendChild(li);
+};
+
+addlist.addEventListener("click", myFunctionAdd);
+dellist.addEventListener("click", () => {
+  let li = document.querySelector("li:last-child");
+  li.remove();
+});
+
 // //dom events
 // let date = document.querySelector(".datee");
 
@@ -89,8 +125,5 @@ parent.addEventListener(
 child.addEventListener("click", () => {
   console.log("child clicked");
 }); //parent first then child
-
-//textContent
-// textContent
 
 //Timing Events...

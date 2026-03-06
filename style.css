@@ -1,0 +1,11 @@
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.boxx{
+    width: 200px;
+    height: 180px;
+    background-color: grey;
+    color: white;
+}
