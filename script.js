@@ -1,3 +1,8 @@
+//accessiing js through html
+console.log(document);
+console.log(document.body);
+console.log(document.title);
+
 //selecting ele
 // let mypara = document.querySelectorAll(".demo");
 // mypara[1].innerHTML = "This is dom";
@@ -9,8 +14,9 @@
 
 // //accessing ele content
 // let mypara = document.querySelector(".demo");
-// // mypara.innerHTML = "<b>hello</b>hello";
+// mypara.innerHTML = "<b>hello</b>hello";//we are setting content
 // mypara.innerText = "<b>hello</b>hellooo";
+// console.log(mypara.textContent);  //we are getting hidden content
 
 // //accessing attributes
 // let input = document.getElementById("username");
@@ -72,13 +78,19 @@ let child = document.querySelector(".child");
 // }); //first child chelga nxt parent
 
 //capturing
-parent.addEventListener("click", () => {
-  console.log("parent clicked");
-},true);
+parent.addEventListener(
+  "click",
+  () => {
+    console.log("parent clicked");
+  },
+  true,
+);
 
 child.addEventListener("click", () => {
   console.log("child clicked");
 }); //parent first then child
 
+//textContent
+// textContent
 
 //Timing Events...
