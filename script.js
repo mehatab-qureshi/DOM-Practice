@@ -92,7 +92,6 @@ dellist.addEventListener("click", () => {
 let hi = document.querySelector(".hi");
 let add = document.querySelector(".add");
 let remove = document.querySelector(".remove");
-
 let text = () => {
   hi.innerHTML = "Text Added";
 };
@@ -100,8 +99,42 @@ let text = () => {
 add.addEventListener("click", text);
 remove.removeEventListener("click", text);
 
-//event bubbling & capturing
-//bubbling(defualt)
+//Event handling
+let form = document.getElementById("form");
+let namee = document.querySelector("#namee");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log(namee.value);
+  console.log("from submitted");
+});
+
+namee.addEventListener("keydown", (e) => {
+  console.log(e.key);
+});
+
+namee.addEventListener("input", () => {
+  console.log("Typing..."); //input event tab trigger hota hai jab user input field ki value change krta jab type kare, delete kare, paste kare — tab event trigger hota hai.
+  console.log(namee.value);
+});
+
+//realworld
+namee.addEventListener("input", () => {
+  console.log("Searching", namee.value); //User jaise jaise type karega → live search run hoga.
+});
+
+//Event object
+let evtobj = document.querySelector(".evtobj");
+evtobj.addEventListener("click", (e) => {
+  console.log(e);
+  console.log(e.target);
+  console.log(e.clientX);
+  console.log(e.clientY);
+  console.log(e.key);
+});
+
+// //event bubbling & capturing
+// //bubbling(defualt)
 let parent = document.querySelector(".parent");
 let child = document.querySelector(".child");
 
@@ -113,17 +146,100 @@ let child = document.querySelector(".child");
 //   console.log("parent clicked");
 // }); //first child chelga nxt parent
 
-//capturing
+// //capturing
+// parent.addEventListener(
+//   "click",
+//   () => {
+//     console.log("parent clicked");
+//   },
+//   true,
+// );
+
+// child.addEventListener("click", () => {
+//   console.log("child clicked");
+// }); //parent first then child
+
+//stop propagation
 parent.addEventListener(
   "click",
-  () => {
+  (e) => {
+    e.stopPropagation(); //stops from entering to nxt evt
     console.log("parent clicked");
   },
   true,
 );
 
-child.addEventListener("click", () => {
-  console.log("child clicked");
-}); //parent first then child
+child.addEventListener(
+  "click",
+  (e) => {
+    console.log("Child clicked");
+  },
+  true,
+);
+
+//Event Deligation
+let li = document.querySelectorAll("li");
+li.forEach((items) => {
+  items.addEventListener("click", (e) => {
+    console.log("Items clicked", e.target);
+  });
+});
+
+//login form
+let loginform = document.getElementById("loginform");
+let username = document.getElementById("username");
+let password = document.getElementById("password");
+
+loginform.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let email = username.value;
+  let pwd = password.value;
+
+  console.log(email, pwd);
+});
+
+//formData API
+let signUpform = document.getElementById("signupForm");
+
+signUpform.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  console.log(formData);
+
+  //read data
+  let name = formData.get("name");
+  let email = formData.get("email");
+  let password = formData.get("password");
+
+  console.log("name:", name, "email:", email, "password:", password);
+
+  //sab data ek sath print
+  for (let [key, value] of formData) {
+    console.log(key, value);
+  }
+});
+
+//Validation form
+let Form = document.getElementById("loginpage");
+
+Form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let formdata = new FormData(e.target);
+  let userName = formdata.get("username");
+  let Password = formdata.get("password");
+
+  if ((username === "") | (Password === "")) {
+    console.log("Enter all the fields");
+    return;
+  }
+
+  if (password < 6) {
+    console.log("Password must be 6 characters");
+    return;
+  }
+  console.log("Login successful")
+});
 
 //Timing Events...
