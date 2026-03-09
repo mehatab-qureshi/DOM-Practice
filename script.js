@@ -51,7 +51,7 @@ console.log(document.title);
 //   body.classList.toggle("dark");
 // });
 
-//creating & removing ele
+//creating, adding & removing ele
 let h2 = document.createElement("h2");
 let body = document.querySelector("body");
 h2.innerText = "created and added content";
@@ -98,6 +98,7 @@ let text = () => {
 
 add.addEventListener("click", text);
 remove.removeEventListener("click", text);
+
 
 //Event handling
 let form = document.getElementById("form");
@@ -230,7 +231,7 @@ Form.addEventListener("submit", (e) => {
   let userName = formdata.get("username");
   let Password = formdata.get("password");
 
-  if ((username === "") | (Password === "")) {
+  if ((userName === "") | (Password === "")) {
     console.log("Enter all the fields");
     return;
   }
@@ -243,3 +244,9 @@ Form.addEventListener("submit", (e) => {
 });
 
 //Timing Events...
+setTimeout(myyFucntion, 3000);
+
+function myyFucntion(){
+  let body = document.querySelector("body")
+  body.innerHTML = "Timout"
+}
