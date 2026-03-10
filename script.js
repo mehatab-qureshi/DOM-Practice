@@ -99,7 +99,6 @@ let text = () => {
 add.addEventListener("click", text);
 remove.removeEventListener("click", text);
 
-
 //Event handling
 let form = document.getElementById("form");
 let namee = document.querySelector("#namee");
@@ -240,13 +239,32 @@ Form.addEventListener("submit", (e) => {
     console.log("Password must be 6 characters");
     return;
   }
-  console.log("Login successful")
+  console.log("Login successful");
 });
 
-//Timing Events...
-setTimeout(myyFucntion, 3000);
 
-function myyFucntion(){
-  let body = document.querySelector("body")
-  body.innerHTML = "Timout"
-}
+//JS running in browser
+console.log("start");
+
+setTimeout(() => {
+  console.log("timeout");
+}, 2000);
+
+Promise.resolve().then(() => {
+  console.log("promise 1");
+});
+
+Promise.resolve().then(() => {
+  console.log("promise 2");
+});
+
+console.log("end");
+
+
+//Timing Events...
+// setTimeout(myyFucntion, 3000);
+
+// function myyFucntion(){
+//   let body = document.querySelector("body")
+//   body.innerHTML = "Timout"
+// }
